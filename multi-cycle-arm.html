@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi-Cycle ARM Processor</title>
+  <link rel="stylesheet" href="assets/css/steller.css" />
+</head>
+<body>
+
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">← Back to Home</a>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <h2>Multi-Cycle ARM Processor (VHDL on FPGA)</h2>
+      <p><strong>Role:</strong> Hardware Designer & Simulation Lead</p>
+      <p><strong>Tools:</strong> VHDL · Xilinx Vivado · Basys 3 FPGA · ModelSim</p>
+
+      <h4>📌 Objective</h4>
+      <p>Design and implement a fully functional 32-bit ARM processor supporting instruction fetch, decode, execute, memory, and write-back stages using a multi-cycle architecture. Validate through behavioral simulation and FPGA deployment.</p>
+
+      <h4>🔧 Components & Modules</h4>
+      <ul>
+        <li><strong>Register File</strong> — 16 general-purpose registers, including custom logic for R15 (PC + 8 override)</li>
+        <li><strong>Controller</strong> — Includes FSM logic for instruction decoding and control signal generation</li>
+        <li><strong>Datapath</strong> — Executes instructions via ALU, Shifter, Memory, and Register File</li>
+        <li><strong>Memory</strong> — Unified instruction/data memory with external program file support</li>
+        <li><strong>Testbench</strong> — Fully simulated instruction sequences for DP, memory, and branching</li>
+      </ul>
+
+      <h4>🧠 Supported Features</h4>
+      <ul>
+        <li>All 32-bit ARMv4 instruction formats: DP, LDR/STR, B/BL</li>
+        <li>ALU operations, shifting, and carry logic implemented</li>
+        <li>Immediate values, PC-relative branches, and memory access</li>
+        <li>Integrated instruction decoder with conditional execution (via ALUFlags)</li>
+        <li>Hardware-mapped switches to select memory addresses on Basys 3</li>
+      </ul>
+
+      <h4>⚙️ Technical Highlights</h4>
+      <ul>
+        <li>Successfully compiled and synthesized using Vivado for FPGA</li>
+        <li>Functional simulation confirmed correct signal timing and control behavior</li>
+        <li>Clocked FSM controller with decode/execute separation</li>
+        <li>Top-level file supports external instruction loading via `program.txt`</li>
+      </ul>
+
+      <h4>📈 Outcomes</h4>
+      <ul>
+        <li>Full-cycle pipeline control with verified ALU flags and memory alignment</li>
+        <li>R15 override logic for accurate PC behavior</li>
+        <li>Successfully demoed on Basys 3 board in final project presentation</li>
+      </ul>
+
+      <h4>📁 Download Files</h4>
+      <a href="assets/docs/DSD_Final_Project_Description_Rev1.pdf" class="btn btn-primary mt-2" download>Download Design Report (PDF)</a>
+
+    </div>
+  </section>
+
+</body>
+</html>

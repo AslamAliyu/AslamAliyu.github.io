@@ -10,6 +10,34 @@
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
     <!-- Bootstrap + Steller main styles -->
 	<link rel="stylesheet" href="assets/css/steller.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" />
+
+    <style>
+        .header {
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .background-holder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/imgs/Aslam_YAZ.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.15; /* adjust if too bright/dark */
+            z-index: 0;
+        }
+    
+        .infos, .widget {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+    
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
 
@@ -52,45 +80,47 @@
     <!-- End of page navibation -->
 
     <!-- Page Header -->
-    <header class="header" id="home">
-        <div class="container">
-            <div class="infos">
-                <h6 class="subtitle">Software Developer Portfolio </h6>
-                <h6 class="title">Aslam Aliyu</h6>
-                <p>Software Engineer</p>
+    <!-- Page Header -->
+<header class="header" id="home">
+    <div class="container">
+        <div class="infos">
+            <h6 class="subtitle">Software Developer Portfolio </h6>
+            <h6 class="title">Aslam Aliyu</h6>
+            <p>Software Engineer</p>
 
-                <div class="buttons pt-3">
-                    <button class="btn btn-primary rounded">HIRE ME</button>
-                    <button class="btn btn-dark rounded"> <a href="assets/imgs/Aslam_Aliyu_cv.pdf" download="Aslam_Aliyu_cv.pdf">DOWNLOAD CV</a></button>
-                </div>      
-
-                <div class="socials mt-4">
-                    <a class="social-item" href="javascript:void(0)"><i class="ti-link"></i></a>
-                    <a class="social-item" href="javascript:void(0)"><i class="ti-google"></i></a>
-                    <a class="social-item" href="javascript:void(0)"><i class="ti-github"></i></a>
-                    <a class="social-item" href="javascript:void(0)"><i class="ti-twitter"></i></a>
-                </div>
-            </div>              
-            <div class="img-holder">
-                <img src="assets/imgs/Aslam_YAZ.png" alt="">
+            <div class="buttons pt-3">
+                <button class="btn btn-primary rounded">HIRE ME</button>
+                <button class="btn btn-dark rounded">
+                    <a href="docs/Aslam_Aliyu_Resume.pdf" download="Aslam_Aliyu_Resume.pdf" style="color: white;">DOWNLOAD Resume</a>
+                </button>
             </div>      
-        </div>  
 
-        <!-- Header-widget -->
-        
-        <div class="widget">
-            <div class="widget-item">
-                <h2>3</h2>
-                <p>Happy Clients</p>
+            <div class="socials mt-4">
+                <a class="social-item" href="https://www.linkedin.com/in/aslamaliyu/"><i class="ti-linkedin"></i></a>
+                <a class="social-item" href="mailto:aslamaliyu@gmail.com"><i class="ti-email"></i></a>
+                <a class="social-item" href="https://github.com/AslamAliyu" target="_blank"><i class="ti-github"></i></a>
+                <a class="social-item" href="https://twitter.com" target="_blank"><i class="ti-twitter"></i></a>
             </div>
-            <div class="widget-item">
-                <h2>6</h2>
-                <p>Project Completed</p>
-            </div>
-            
+        </div>              
+
+        <div class="img-holder">
+            <img src="assets/imgs/Aslam_YAZ.png" alt="Aslam Aliyu" />
+        </div>      
+    </div>  
+
+    <!-- Header-widget -->
+    <div class="widget">
+        <div class="widget-item">
+            <h2>3</h2>
+            <p>Happy Clients</p>
         </div>
-    </header>
-    <!-- End of Page Header -->
+        <div class="widget-item">
+            <h2>6</h2>
+            <p>Project Completed</p>
+        </div>
+    </div>
+</header>
+
     
     <!-- About section -->
     <section id="about" class="section mt-3">
@@ -379,83 +409,61 @@
           
 
     <!-- Portfolio section -->
-    <section id="portfolio" class="section">
+     <!-- Portfolio section -->
+     <section id="portfolio" class="section">
         <div class="container text-center">
             <h6 class="subtitle">Portfolio</h6>
             <h6 class="section-title mb-4">Check My Wonderful Works</h6>
-            <!--<p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br> rerum commodi corrupti, temporibus non quam.</p>-->
-
+    
             <div class="row">
-                <div class="col-sm-4">
+                <!-- Autonomous Car Project -->
+                <div class="col-md-4">
                     <div class="img-wrapper">
-                        <img src="assets/imgs/jetsontrack.jpeg" alt="">
+                        <img src="assets/imgs/jetsontrack.jpeg" alt="Autonomous Car Project">
                         <div class="overlay">
                             <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                            </div>  
+                                <h5>Autonomous Car Project</h5>
+                                <a href="assets/imgs/jetsontrack.jpeg" data-lightbox="portfolio" data-title="Autonomous Car Project"><i class="ti-zoom-in"></i></a>
+                                <a href="autonomous-car.html"><i class="ti-link"></i></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="img-wrapper">
-                        <img src="assets/imgs/gccp2.png" alt="">
-                        <div class="overlay">
-                            <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                            </div>                              
-                        </div>
-                    </div>                  
                 </div>
-                <div class="col-sm-4">
+    
+                <!-- Multi-Cycle ARM Processor -->
+                <div class="col-md-4">
                     <div class="img-wrapper">
-                        <img src="assets/imgs/jetsoncar.jpg" alt="">
+                        <img src="assets/imgs/arm-vhdl.jpeg" alt="Multi-Cycle ARM Processor">
                         <div class="overlay">
                             <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                            </div>  
+                                <h5>Multi-Cycle ARM Processor</h5>
+                                <a href="assets/imgs/arm-vhdl.jpeg" data-lightbox="portfolio" data-title="Multi-Cycle ARM Processor"><i class="ti-zoom-in"></i></a>
+                                <a href="multi-cycle-arm.html"><i class="ti-link"></i></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="img-wrapper">
-                        <img src="assets/imgs/gccpawebsite.png" alt="">
-                        <div class="overlay">
-                            <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                            </div>                              
-                        </div>
-                    </div>                  
                 </div>
-                <div class="col-sm-4">
+    
+                <!-- 3Pi Line Following Robot -->
+                <div class="col-md-4">
                     <div class="img-wrapper">
-                        <img src="assets/imgs/jetson.jpeg" alt="">
+                        <img src="assets/imgs/3pi-robot.jpeg" alt="3Pi Line Following Robot">
                         <div class="overlay">
                             <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                            </div>  
+                                <h5>3Pi Line Following Robot</h5>
+                                <a href="assets/imgs/3pi-robot.jpeg" data-lightbox="portfolio" data-title="3Pi Line Following Robot"><i class="ti-zoom-in"></i></a>
+                                <a href="3pi-robot.html"><i class="ti-link"></i></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="img-wrapper">
-                        <img src="assets/imgs/gccp3.png" alt="">
-                        <div class="overlay">
-                            <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                            </div>                              
-                        </div>
-                    </div>                  
                 </div>
             </div>
-
         </div>
     </section>
+
+
+   
+    
     <!-- End of portfolio section -->
  <!--  
      Testmonial Section 
@@ -774,6 +782,8 @@
 
     <!-- steller js -->
     <script src="assets/js/steller.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
 
 </body>
 </html>

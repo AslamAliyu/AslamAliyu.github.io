@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autonomous Car (Lockheed Martin)</title>
+  <link rel="stylesheet" href="assets/css/steller.css" />
+</head>
+<body>
+
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">← Back to Home</a>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <h2>Autonomous Car Project (Lockheed Martin Sponsored)</h2>
+      <p><strong>Role:</strong> Software & Finance Lead | Binghamton University Senior Design</p>
+      <p><strong>Team:</strong> Aslam Aliyu, Andrew Deoki, Patrick Nilan, Daniel Nissim</p>
+
+      <h4>📌 Objective</h4>
+      <p>Develop an autonomous vehicle using the NVIDIA JetRacer AI/ML platform that can drive autonomously on a track using live sensor input and camera vision, optimized through real-time machine learning.</p>
+
+      <h4>⚙️ Hardware Components</h4>
+      <ul>
+        <li>Jetson Nano Developer Kit</li>
+        <li>CSI Wide-Angle Camera (Leopard Imaging IMX219)</li>
+        <li>LaTrax Rally RC Chassis</li>
+        <li>PWM Servo Motor Driver, RC Servo Multiplexer, IMU</li>
+        <li>Electronic Speed Controller, WiFi Card, Battery Pack</li>
+      </ul>
+
+      <h4>💻 Software & Tools</h4>
+      <ul>
+        <li>Python with Jupyter Notebook</li>
+        <li>JetCam, OpenCV, PyTorch, torch2trt</li>
+        <li>Real-time data training GUI for live corrections</li>
+      </ul>
+
+      <h4>🎯 Key Features</h4>
+      <ul>
+        <li>Live ML model training with on-track data snapshots</li>
+        <li>Real-time prediction and driving via Jetson Nano</li>
+        <li>Line detection, obstacle detection, variable throttle</li>
+        <li>Bounding boxes for stop signs and pedestrians</li>
+      </ul>
+
+      <h4>🧠 Training Methodology</h4>
+      <p>Collected image data manually using a GUI interface where optimal driving direction was marked by clicking. Model was retrained during live test runs using real-time feedback to refine driving predictions.</p>
+
+      <h4>📈 Results</h4>
+      <ul>
+        <li>Achieved 95% object detection accuracy</li>
+        <li>Reduced prediction latency by 0.03 seconds</li>
+        <li>Improved detection precision by 32% through training optimization</li>
+      </ul>
+
+      <h4>📸 Project Gallery</h4>
+      <img src="assets/imgs/jetsoncar.jpg" alt="Jetson Car Build" style="max-width: 100%; margin-bottom: 10px;" />
+      <img src="assets/imgs/jetsontrack.jpeg" alt="Track Testing" style="max-width: 100%;" />
+
+      <h4>📁 Download Full Report</h4>
+      <a href="assets/docs/ECD304_Final_Detailed_Design.pdf" download class="btn btn-primary mt-2">Download Project PDF</a>
+
+    </div>
+  </section>
+
+</body>
+</html>
