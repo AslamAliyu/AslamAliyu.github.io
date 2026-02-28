@@ -175,32 +175,32 @@
     }
 
     /* ═══════════════════════════════════════════════════════════════════════
-       HERO  — centered editorial: text up top, full-width photo panel below
+       HERO  — two-column: text left, large photo right
+       Photo shrinks into a floating avatar circle on scroll (see JS below)
     ═══════════════════════════════════════════════════════════════════════ */
     #hero {
       min-height: 100vh;
       padding-top: var(--nav-h);
       background:
-        radial-gradient(60% 55% at 50% 0%, rgba(190,135,221,.30) 0%, transparent 100%),
+        radial-gradient(60% 70% at 100% 0%, rgba(190,135,221,.28) 0%, transparent 70%),
         linear-gradient(160deg, rgba(76,30,100,.98) 0%, var(--dark) 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      display: grid;
+      grid-template-columns: 1fr 44%;
+      align-items: stretch;
       overflow: hidden;
       position: relative;
     }
 
     .hero-text {
-      padding: 68px 32px 52px;
-      text-align: center;
+      padding: 80px 40px 80px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       position: relative; z-index: 1;
-      max-width: 780px;
-      width: 100%;
     }
 
     .hero-badges {
-      display: flex; gap: 12px; flex-wrap: wrap;
-      align-items: center; justify-content: center;
+      display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
       margin-bottom: 32px;
     }
     .hero-loc {
@@ -221,7 +221,7 @@
     /* Giant Anton name */
     .hero-name {
       font-family: 'Anton', sans-serif;
-      font-size: clamp(80px, 13vw, 140px);
+      font-size: clamp(72px, 8.5vw, 118px);
       line-height: .92;
       text-transform: uppercase;
       letter-spacing: -.01em;
@@ -237,21 +237,17 @@
     .hero-sub {
       font-family: 'PT Serif', Georgia, serif;
       font-style: italic;
-      font-size: 20px;
+      font-size: 19px;
       color: rgba(255,255,255,.65);
       margin-bottom: 16px;
     }
     .hero-bio {
       font-size: 15px; line-height: 1.75;
       color: rgba(255,255,255,.48);
-      max-width: 500px;
-      margin: 0 auto 44px;
+      max-width: 440px; margin-bottom: 44px;
     }
 
-    .hero-btns {
-      display: flex; gap: 12px; flex-wrap: wrap;
-      justify-content: center; margin-bottom: 40px;
-    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
 
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
@@ -270,9 +266,7 @@
     }
     .btn-outline:hover { border-color: var(--lav); color: var(--lav); }
 
-    .hero-socials {
-      display: flex; gap: 24px; justify-content: center;
-    }
+    .hero-socials { display: flex; gap: 24px; }
     .hero-socials a {
       font-size: 12px; font-weight: 600; letter-spacing: .06em;
       text-transform: uppercase; color: rgba(255,255,255,.32);
@@ -280,39 +274,79 @@
     }
     .hero-socials a:hover { color: var(--lav); }
 
-    /* Full-width photo panel — sits flush at the bottom of the hero */
-    .hero-photo-panel {
-      width: calc(100% - 64px);
-      max-width: 1100px;
-      flex: 1;
-      min-height: 400px;
-      max-height: 52vh;
+    /* Right column — full-height photo */
+    .hero-photo-col {
       position: relative;
       overflow: hidden;
-      border-radius: 32px 32px 0 0;
-      margin: 0 auto;
-      align-self: flex-end;
+      /* Rounded bottom-left corner for visual softness */
+      border-radius: 0 0 0 52px;
     }
-    .hero-photo-panel img {
+    .hero-photo-col img {
+      position: absolute; inset: 0;
       width: 100%; height: 100%;
       object-fit: cover;
-      object-position: center 20%;
+      object-position: center top;
     }
-    /* Soft fade from hero bg colour into the top edge of the photo */
-    .hero-photo-panel::before {
+    /* Left-edge gradient so text bleeds cleanly into photo */
+    .hero-photo-col::before {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 100px; z-index: 1;
-      background: linear-gradient(to bottom, rgba(64,25,82,.85) 0%, transparent 100%);
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to right, var(--dark) 0%, transparent 35%);
       pointer-events: none;
     }
 
-    @media (max-width: 700px) {
-      .hero-photo-panel {
-        width: calc(100% - 32px);
-        min-height: 280px; max-height: 42vh;
-        border-radius: 20px 20px 0 0;
-      }
+    /* ── Floating avatar bubble (appears after scroll past hero) ── */
+    .avatar-bubble {
+      position: fixed;
+      /* Vertically centred in the navbar, sitting left of the CTA button */
+      top: calc((var(--nav-h) - 50px) / 2);
+      right: 172px;
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2.5px solid var(--lav);
+      box-shadow: 0 4px 20px rgba(64,25,82,.30);
+      cursor: pointer;
+      z-index: 950;
+      /* Hidden by default, springs in when .show is added */
+      opacity: 0;
+      transform: scale(0.2);
+      transition:
+        opacity  0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+        transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+    }
+    .avatar-bubble.show {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+    .avatar-bubble img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+    }
+    /* Tooltip on hover */
+    .avatar-bubble::after {
+      content: 'Back to top';
+      position: absolute; bottom: -30px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--dark); color: var(--white);
+      font-size: 10px; font-weight: 600; letter-spacing: .04em;
+      white-space: nowrap; padding: 3px 8px; border-radius: 4px;
+      opacity: 0; transition: opacity .2s;
+      pointer-events: none;
+    }
+    .avatar-bubble:hover::after { opacity: 1; }
+
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; }
+      .hero-text { padding: 60px 28px; }
+      .hero-photo-col { height: 52vw; min-height: 280px; border-radius: 0 0 40px 40px; }
+      .avatar-bubble { right: 20px; }
+    }
+    @media (max-width: 600px) {
+      .hero-photo-col { display: none; }
+      .avatar-bubble { display: none; }
     }
 
     /* ═══════════════════════════════════════════════════════════════════════
@@ -824,11 +858,17 @@
     </div>
   </div>
 
-  <!-- Hero photo — full-width panel sitting flush at the bottom of the section -->
-  <div class="hero-photo-panel">
+  <!-- Hero photo — right column, full height -->
+  <div class="hero-photo-col" id="heroPhotoCol">
     <img src="images/portfolio-img/hero.jpg" alt="Aslam Aliyu" />
   </div>
 </section>
+
+<!-- Floating avatar — springs in when user scrolls past the hero.
+     Clicking it scrolls back to the top. -->
+<div class="avatar-bubble" id="avatarBubble" title="Back to top" role="button" aria-label="Scroll to top">
+  <img src="images/portfolio-img/hero.jpg" alt="Aslam Aliyu" />
+</div>
 
 
 <!-- ═══════════════════════════════════════════════════════════════════════
@@ -1387,10 +1427,30 @@
 ═══════════════════════════════════════════════════════════════════════ -->
 <script>
   // ── Navbar scroll shadow ──────────────────────────────────────────────
-  const navbar = document.getElementById('navbar');
+  const navbar      = document.getElementById('navbar');
+  const heroSection = document.getElementById('hero');
+  const avatarBubble = document.getElementById('avatarBubble');
+
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('shadow', window.scrollY > 30);
+    const scrollY    = window.scrollY;
+    const heroBottom = heroSection.getBoundingClientRect().bottom;
+    const navH       = navbar.offsetHeight;
+
+    // Navbar shadow
+    navbar.classList.toggle('shadow', scrollY > 30);
+
+    // Avatar bubble: show when hero photo has scrolled out of view
+    if (heroBottom < navH + 40) {
+      avatarBubble.classList.add('show');
+    } else {
+      avatarBubble.classList.remove('show');
+    }
   }, { passive: true });
+
+  // Clicking avatar scrolls smoothly back to top
+  avatarBubble.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
   // ── Mobile hamburger ──────────────────────────────────────────────────
   const hamburger  = document.getElementById('hamburger');
