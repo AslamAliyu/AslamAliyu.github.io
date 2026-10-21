@@ -108,12 +108,14 @@
     .btn.solid { background: var(--ink); color: var(--paper); }
     .btn:hover { border-color: var(--brand); color: var(--brand); }
     .btn.solid:hover { background: var(--brand); border-color: var(--brand); color: #fff; }
-    .hero-photo { margin: 0; overflow: hidden; border-radius: 22px; border: 1px solid var(--line); aspect-ratio: 4 / 5; background: var(--white); }
-    .hero-photo img { width: 100%; height: 115%; object-fit: cover; object-position: 45% 40%; }
+    .hero-photo { margin: 0; overflow: hidden; border-radius: 22px; border: 1px solid var(--line); aspect-ratio: 3 / 4; background: var(--white); }
+    .hero-photo img { width: 100%; height: 115%; object-fit: cover; object-position: 50% 85%; }
+    .hero-bg { position: absolute; inset: -6%; width: 112%; height: 112%; object-fit: cover; object-position: 50% 70%; filter: blur(56px) saturate(.85); opacity: .14; pointer-events: none; z-index: 0; }
+    :root[data-theme="dark"] .hero-bg, :root:not([data-theme="light"]) .hero-bg { opacity: .12; }
     @media (max-width: 900px) {
       .hero { min-height: 0; padding-top: 120px; }
       .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-      .hero-photo { aspect-ratio: 4 / 4.2; max-width: 520px; }
+      .hero-photo { aspect-ratio: 3 / 3.6; max-width: 520px; }
     }
 
     /* Marquee */
@@ -188,8 +190,11 @@
     }
 
     /* Experience */
-    .exp-list { margin-top: 56px; border-top: 1px solid var(--line); }
-    .exp { display: grid; grid-template-columns: 240px 1fr; gap: 40px; padding: 48px 0; border-bottom: 1px solid var(--line); }
+    .exp-layout { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.6fr); gap: 64px; align-items: start; margin-top: 56px; }
+    .exp-head { position: sticky; top: 110px; }
+    .exp-list { border-top: 1px solid var(--line); min-width: 0; }
+    @media (max-width: 900px) { .exp-layout { grid-template-columns: 1fr; gap: 0; } .exp-head { position: static; } }
+    .exp { display: grid; grid-template-columns: 190px 1fr; gap: 32px; padding: 48px 0; border-bottom: 1px solid var(--line); }
     .exp .when { font-family: var(--mono); font-size: 13px; color: var(--gray); }
     .exp .when b { display: block; font-family: var(--display); font-size: 18px; color: var(--ink); font-weight: 600; margin-bottom: 4px; }
     .exp h3 { font-size: clamp(24px, 2.6vw, 34px); letter-spacing: -.03em; margin: 0 0 4px; }
@@ -281,6 +286,7 @@
     <!-- HERO -->
     <section id="hero" class="hero">
       <div class="hero-glow" aria-hidden="true"></div>
+      <img class="hero-bg" src="images/portfolio-img/trail.webp" alt="" aria-hidden="true" width="900" height="1200" />
       <div class="wrap hero-grid">
         <div>
           <p class="label">📍 Long Island City, NY</p>
@@ -298,7 +304,7 @@
           </div>
         </div>
         <figure class="hero-photo">
-          <img src="images/portfolio-img/hero.webp" alt="Portrait of Aslam Aliyu in a dark jacket and white collared shirt, outdoors" width="1100" height="733" fetchpriority="high" />
+          <img src="images/portfolio-img/trail.webp" alt="Aslam Aliyu smiling on a wooded trail with his dog" width="900" height="1200" fetchpriority="high" />
         </figure>
       </div>
     </section>
@@ -438,8 +444,11 @@
     <!-- EXPERIENCE -->
     <section id="experience">
       <div class="wrap">
-        <p class="label">Career</p>
-        <h2 class="section-title">Work<br />experience.</h2>
+        <div class="exp-layout">
+        <div class="exp-head">
+          <p class="label">Career</p>
+          <h2 class="section-title">Work<br />experience.</h2>
+        </div>
         <div class="exp-list">
 
           <div class="exp">
@@ -494,6 +503,7 @@
             </div>
           </div>
 
+        </div>
         </div>
 
         <p class="label" style="margin-top:80px;">Education</p>
