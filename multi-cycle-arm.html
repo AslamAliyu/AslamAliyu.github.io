@@ -1,66 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Multi-Cycle ARM Processor</title>
-  <link rel="stylesheet" href="assets/css/steller.css" />
+  <title>Multi-Cycle ARM Processor (VHDL on FPGA) — Aslam Aliyu</title>
+  <meta name="description" content="Team Lead on a multi-cycle 32-bit ARM processor in VHDL, verified in simulation and demoed on a Basys 3 FPGA." />
+  <link rel="canonical" href="https://www.aslamaliyu.com/multi-cycle-arm.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fa3600'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='28' font-weight='700' text-anchor='middle' fill='%23ffffff'%3EAA%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/project.css" />
 </head>
 <body>
 
-  <nav class="navbar navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">← Back to Home</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="logo">Aslam<span>.</span>Aliyu</a>
+      <a href="index.html#projects" class="back">← All projects</a>
     </div>
-  </nav>
+  </header>
 
-  <section class="section">
-    <div class="container">
-      <h2>Multi-Cycle ARM Processor (VHDL on FPGA)</h2>
-      <p><strong>Role:</strong> Hardware Designer & Simulation Lead</p>
-      <p><strong>Tools:</strong> VHDL · Xilinx Vivado · Basys 3 FPGA · ModelSim</p>
-
-      <h4>📌 Objective</h4>
-      <p>Design and implement a fully functional 32-bit ARM processor supporting instruction fetch, decode, execute, memory, and write-back stages using a multi-cycle architecture. Validate through behavioral simulation and FPGA deployment.</p>
-
-      <h4>🔧 Components & Modules</h4>
-      <ul>
-        <li><strong>Register File</strong> — 16 general-purpose registers, including custom logic for R15 (PC + 8 override)</li>
-        <li><strong>Controller</strong> — Includes FSM logic for instruction decoding and control signal generation</li>
-        <li><strong>Datapath</strong> — Executes instructions via ALU, Shifter, Memory, and Register File</li>
-        <li><strong>Memory</strong> — Unified instruction/data memory with external program file support</li>
-        <li><strong>Testbench</strong> — Fully simulated instruction sequences for DP, memory, and branching</li>
-      </ul>
-
-      <h4>🧠 Supported Features</h4>
-      <ul>
-        <li>All 32-bit ARMv4 instruction formats: DP, LDR/STR, B/BL</li>
-        <li>ALU operations, shifting, and carry logic implemented</li>
-        <li>Immediate values, PC-relative branches, and memory access</li>
-        <li>Integrated instruction decoder with conditional execution (via ALUFlags)</li>
-        <li>Hardware-mapped switches to select memory addresses on Basys 3</li>
-      </ul>
-
-      <h4>⚙️ Technical Highlights</h4>
-      <ul>
-        <li>Successfully compiled and synthesized using Vivado for FPGA</li>
-        <li>Functional simulation confirmed correct signal timing and control behavior</li>
-        <li>Clocked FSM controller with decode/execute separation</li>
-        <li>Top-level file supports external instruction loading via `program.txt`</li>
-      </ul>
-
-      <h4>📈 Outcomes</h4>
-      <ul>
-        <li>Full-cycle pipeline control with verified ALU flags and memory alignment</li>
-        <li>R15 override logic for accurate PC behavior</li>
-        <li>Successfully demoed on Basys 3 board in final project presentation</li>
-      </ul>
-
-      <h4>📁 Download Files</h4>
-      <a href="assets/docs/DSD_Final_Project_Description_Rev1.pdf" class="btn btn-primary mt-2" download>Download Design Report (PDF)</a>
-
+  <main>
+    <div class="wrap project-head">
+      <p class="label">Project · Embedded Systems</p>
+      <h1>Multi-Cycle ARM Processor</h1>
+      <p class="role"><strong>Team Lead</strong> · VHDL on FPGA</p>
+      <p class="dates">September 2021 – December 2021</p>
     </div>
-  </section>
 
+    <div class="wrap">
+      <section class="block">
+        <h2>Tools</h2>
+        <p>VHDL · Xilinx Vivado · Basys 3 FPGA · ModelSim</p>
+      </section>
+
+      <section class="block">
+        <h2>Objective</h2>
+        <p>Design and implement a fully functional 32-bit ARM processor supporting instruction fetch, decode, execute, memory, and write-back stages using a multi-cycle architecture. Validate through behavioral simulation and FPGA deployment.</p>
+      </section>
+
+      <section class="block">
+        <h2>Components and modules</h2>
+        <ul>
+          <li><strong>Register File:</strong> 16 general-purpose registers, including custom logic for R15 (PC + 8 override)</li>
+          <li><strong>Controller:</strong> FSM logic for instruction decoding and control signal generation</li>
+          <li><strong>Datapath:</strong> Executes instructions via ALU, Shifter, Memory, and Register File</li>
+          <li><strong>Memory:</strong> Unified instruction and data memory with external program file support</li>
+          <li><strong>Testbench:</strong> Simulated instruction sequences for data processing, memory, and branching</li>
+        </ul>
+      </section>
+
+      <section class="block">
+        <h2>Supported features</h2>
+        <ul>
+          <li>All 32-bit ARMv4 instruction formats: data processing, LDR/STR, B/BL</li>
+          <li>ALU operations, shifting, and carry logic</li>
+          <li>Immediate values, PC-relative branches, and memory access</li>
+          <li>Instruction decoder with conditional execution (via ALU flags)</li>
+          <li>Hardware-mapped switches to select memory addresses on the Basys 3</li>
+        </ul>
+      </section>
+
+      <section class="block">
+        <h2>Technical highlights</h2>
+        <ul>
+          <li>Compiled and synthesized with Vivado for the FPGA</li>
+          <li>Functional simulation confirmed correct signal timing and control behavior</li>
+          <li>Clocked FSM controller with decode and execute separation</li>
+          <li>Top-level file loads instructions from an external <code>program.txt</code></li>
+        </ul>
+      </section>
+
+      <section class="block">
+        <h2>Outcomes</h2>
+        <ul>
+          <li>Multi-cycle pipeline control with verified ALU flags and memory alignment</li>
+          <li>R15 override logic for accurate PC behavior</li>
+          <li>Demonstrated on the Basys 3 board in the final project presentation</li>
+        </ul>
+      </section>
+
+      <section class="more">
+        <p class="label" style="margin:0 0 10px;">More projects</p>
+        <a href="autonomous-car.html">Autonomous Car (Lockheed Martin Sponsored) →</a>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Aslam Aliyu</span>
+      <span><a href="index.html">Home</a> · <a href="https://github.com/AslamAliyu" target="_blank" rel="noopener">GitHub</a> · <a href="mailto:aslamaliyu@gmail.com">Email</a></span>
+    </div>
+  </footer>
 </body>
 </html>
